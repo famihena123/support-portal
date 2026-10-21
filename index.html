@@ -1,4 +1,4 @@
-
+cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +11,38 @@
   <main>
     <h1>Northstar Customer Support</h1>
     <p>Find help for your account and orders.</p>
+
     <section aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact Our Support Team</h2>
+      <h2 id="contact-heading">Contact support</h2>
       <p>Email: <a href="mailto:support@example.com">support@example.com</a></p>
       <p>Support hours: Monday through Friday, 9 a.m. to 5 p.m. Central Time.</p>
+      <p>Please include your order number when contacting support.</p>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+      <h3>How can I check my order status?</h3>
+      <p>Sign in to your account and open the Orders page.</p>
     </section>
   </main>
 </body>
 </html>
+EOF
+
+cat > support-checklist.md <<'EOF'
+# Customer support verification checklist
+
+- Contact email is visible.
+- Support hours specify Central Time.
+- Customers are asked to include their order number.
+- The FAQ explains where to find order status.
+- The page remains readable in a narrow browser window.
+EOF
+
+git status
+git diff
+git add index.html support-checklist.md
+git diff --staged
+git commit -m "Add order status FAQ and support checklist"
+git push origin main
+git status
